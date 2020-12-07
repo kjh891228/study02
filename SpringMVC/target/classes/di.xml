@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="people" class="org.hansung.di.People">
+		<constructor-arg name="name" value="김지현"></constructor-arg>
+		<constructor-arg name="pNum" value="010-1234-5678"></constructor-arg>
+		<constructor-arg name="car" ref="car2"></constructor-arg>
+	</bean>
+	
+	<bean id="people2" class="org.hansung.di.People" scope="prototype">
+		<property name="name" value="홍길동"></property>
+		<property name="pNum" value="010-7896-4563"></property>
+		<property name="car" ref="car2"></property>
+		<property name="major">
+			<list>
+				<value>컴퓨터공학과</value>
+				<value>경영학과</value>
+				<value>산업디자인과</value>
+			</list>
+		</property>
+		<property name="carList">
+			<list>
+				<ref bean="car"/>
+				<ref bean="car2"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="car" class="org.hansung.di.Car">
+		<constructor-arg name="model" value="그랜져"></constructor-arg>
+		<constructor-arg name="price" value="5000"></constructor-arg>
+	</bean>
+	
+	<bean id="car2" class="org.hansung.di.Car">
+		<constructor-arg name="model" value="모닝"></constructor-arg>
+		<constructor-arg name="price" value="700"></constructor-arg>
+	</bean>
+	
+	<bean id="samsung" class="org.hansung.di.SamsungTV">
+		<constructor-arg name="model" value="ABC"></constructor-arg>
+		<constructor-arg name="price" value="1000"></constructor-arg>
+	</bean>
+	<bean id="lg" class="org.hansung.di.LGTV"></bean>
+</beans>
